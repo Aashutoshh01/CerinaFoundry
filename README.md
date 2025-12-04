@@ -2,8 +2,7 @@
 
 **An Agentic Workflow for Clinical Protocol Generation**
 
-![Architecture Diagram](./architecture_diagram.png)
-
+![Architecture Diagram](cerina_foundry/architecture_diagram.png)
 ## 📖 Overview
 
 **Cerina Foundry** is a specialized multi-agent AI system designed to assist mental health professionals in drafting **Cognitive Behavioral Therapy (CBT)** clinical protocols. Unlike standard LLM interactions, Cerina employs a "Foundry" of specialized agents that collaborate, critique, and refine clinical content before it ever reaches a human for final approval.
