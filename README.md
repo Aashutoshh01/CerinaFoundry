@@ -39,6 +39,34 @@ The workflow is orchestrated using **LangGraph**, consisting of four distinct ag
 
 ---
 
+## 🔮 Deep State Management (The "Brain")
+
+To satisfy the requirement for a "rich, structured state", the agents share a strictly typed schema, acting as a shared project workspace.
+
+```python
+class CerinaState(TypedDict):
+    """
+    The Blackboard State shared across all agents.
+    """
+    # Conversation history (Standard LangChain messages)
+    messages: Annotated[list[BaseMessage], add_messages]
+    
+    # The live artifact being iterated on
+    current_draft: str
+    
+    # Circuit breaker to prevent infinite critique loops
+    iteration_count: int
+    
+    # Append-only log of all agent critiques (The "Memory")
+    critique_history: Annotated[List[Critique], lambda x, y: x + y]
+    
+    # Workflow status
+    final_status: Literal["drafting", "reviewing", "approved", "rejected"]
+```
+
+Why this matters: By storing critique_history as a persistent list, the Drafter agent has full context of why previous attempts failed, enabling true agentic learning within the session.
+
+---
 ## 🧠 System Architecture & State Logic
 
 This project demonstrates advanced state management and fault tolerance.
