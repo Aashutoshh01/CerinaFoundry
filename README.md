@@ -7,7 +7,7 @@
 
 **Cerina Foundry** is a specialized multi-agent AI system designed to assist mental health professionals in drafting **Cognitive Behavioral Therapy (CBT)** clinical protocols. Unlike standard LLM interactions, Cerina employs a "Foundry" of specialized agents that collaborate, critique, and refine clinical content before it ever reaches a human for final approval.
 
-The system prioritizes **safety** and **clinical accuracy** through a rigorous Human-in-the-Loop (HITL) architecture, ensuring that no AI-generated medical advice is finalized without professional oversight.
+The system prioritizes **safety** and **clinical accuracy** through a rigorous Human-in-the-Loop architecture, ensuring that no AI-generated medical advice is finalized without oversight.
 
 ## 🎥 Demo & Walkthrough
 
@@ -31,7 +31,7 @@ The workflow is orchestrated using **LangGraph**, consisting of four distinct ag
 
 3.  **🩺 Clinical Critic (QA Agent)**
     * **Role:** Acts as a clinical supervisor. It scores drafts on "Empathy" and "CBT Structure" (1-10 scale).
-    * **Mechanism:** If the score is below threshold, it rejects the draft and sends it back to the *Drafter* with actionable clinical feedback.
+    * **Mechanism:** If the score is below threshold, it rejects the draft and sends it back to the *Drafter* with actionable feedback.
 
 4.  **🚨 Crisis Manager (Intervention Agent)**
     * **Role:** Activates *only* during severe safety events.
@@ -43,7 +43,7 @@ The workflow is orchestrated using **LangGraph**, consisting of four distinct ag
 
 This project demonstrates advanced state management and fault tolerance.
 
-### 1. Human-in-the-Loop (HITL)
+### 1. Human-in-the-Loop
 The workflow is designed to explicitly pause at the `human_approval` node using LangGraph's **`interrupt`** mechanism.
 * Agents refine the draft until it passes automated checks.
 * The system pauses execution and waits.
@@ -53,10 +53,10 @@ The workflow is designed to explicitly pause at the `human_approval` node using 
 ### 2. SQLite Persistence (Fault Tolerance)
 We utilize `SqliteSaver` as a checkpointer to persist the graph state after every node execution.
 * **Why is this critical?** In standard web apps, refreshing the page often kills the active process.
-* **In Cerina Foundry:** If a user generates a draft and refreshes the browser (or the server restarts), the session is **not lost**. The frontend re-fetches the state using the `thread_id` from the SQLite database, resuming the workflow exactly where it left off.
+* **In Cerina Foundry:** If a user generates a draft and refreshes the browser, the session is **not lost**. The frontend re-fetches the state using the `thread_id` from the SQLite database, resuming the workflow exactly where it left off.
 
 ### 3. Model Context Protocol (MCP)
-The system exposes an MCP Server (`mcp_server.py`), allowing external AI clients (like Claude Desktop or Cursor) to:
+The system exposes an MCP Server (`mcp_server.py`), allowing external AI clients (like Claude Desktop) to:
 * Trigger protocol generation remotely.
 * Receive "Approval Required" interrupts.
 * Submit reviews directly from the external client environment.
@@ -110,7 +110,7 @@ Server runs at: **http://0.0.0.0:8000**
 
 ## 3. Frontend (Dashboard)
 
-Navigate to the `client/frontend` folder.
+Navigate to the `cerina_foundry\cerina-dashboard\src` folder.
 
 ### Bash
 
