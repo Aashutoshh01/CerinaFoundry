@@ -81,3 +81,83 @@ The project requires Python 3.11.
 # Create and activate environment
 conda create -n cerina python=3.11
 conda activate cerina
+```
+---
+
+## 2. Backend (Server)
+
+Navigate to the root directory where `server.py` is located.
+
+### Bash
+
+```bash
+# Install dependencies
+pip install -r requirements.txt
+
+# Create .env file with your keys
+# OPENAI_API_KEY=sk-...
+# DISCORD_WEBHOOK_URL=https://discord.com/api/webhooks/...
+
+# Run the FastAPI Server
+python server.py
+```
+
+Server runs at: **http://0.0.0.0:8000**
+
+---
+
+## 3. Frontend (Dashboard)
+
+Navigate to the `client/frontend` folder.
+
+### Bash
+
+```bash
+npm install
+npm run dev
+```
+
+UI runs at: **http://localhost:5173**
+
+---
+
+## 4. Running via MCP Inspector
+
+To test the Model Context Protocol integration:
+
+### Bash
+
+```bash
+npx @modelcontextprotocol/inspector python mcp_server.py
+```
+
+---
+
+# 🔮 Future Roadmap: RAG Integration
+
+To further enhance safety, the next iteration of **Cerina Foundry** will implement Retrieval-Augmented Generation (RAG).
+
+### Objective
+Reduce hallucinations and improve risk detection.
+
+### Implementation
+Before the Safety Guardian assesses a prompt, the system will query a vector database containing a curated set of:
+
+- High-risk medical queries  
+- Adversarial prompts  
+
+### Benefit
+This ensures contextually similar dangerous queries are flagged **immediately**, based on medical guidelines—not solely on LLM probabilistic inference.
+
+---
+
+# 📂 Repository Structure
+
+```
+graph.py       - Defines the StateGraph, routing logic, and checkpointers.
+nodes.py       - Contains the agent definitions (Drafter, Safety, Clinical, Crisis).
+state.py       - Defines the CerinaState and Critique TypedDicts.
+server.py      - FastAPI backend for the React UI.
+mcp_server.py  - MCP Server implementation for external clients.
+main.py        - CLI entry point for testing the graph locally.
+```
