@@ -138,7 +138,7 @@ Server runs at: **http://0.0.0.0:8000**
 
 ## 3. Frontend (Dashboard)
 
-Navigate to the `cerina_foundry\cerina-dashboard\src` folder.
+Navigate to the `cerina_foundry\cerina-dashboard` folder.
 
 ### Bash
 
