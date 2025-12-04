@@ -9,7 +9,7 @@
 
 The system prioritizes **safety** and **clinical accuracy** through a rigorous Human-in-the-Loop (HITL) architecture, ensuring that no AI-generated medical advice is finalized without professional oversight.
 
-### 🎥 [Watch the Demo Video Here](#)
+### 🎥 [Watch the Demo Video Here](https://drive.google.com/file/d/1JVs_IvuoTh7UXbgM4IEMntNBppH-Fzy4/view?usp=sharing)
 *(Link your Loom video here)*
 
 ---
