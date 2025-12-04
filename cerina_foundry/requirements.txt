@@ -1,0 +1,17 @@
+langgraph
+langchain-openai
+pydantic
+python-dotenv
+fastapi 
+uvicorn 
+langchain 
+langchain-core 
+openai 
+tiktoken 
+httpx
+langgraph-checkpoint-sqlite
+mcp
+axios 
+lucide-react
+requests
+grandalf
